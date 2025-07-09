@@ -55,7 +55,7 @@ export default function Cotacao() {
           <ul className={styles.resultList}>
             {cotacoes.map((item, index) => (
               <li key={index}>
-                <strong>Data:</strong> {new Date(item.timestamp * 1000).toLocaleDateString()} |
+                <strong>Data:</strong> {new Date(item.timestamp * 1000).toLocaleDateString('pt-BR')} |
                 <strong> Compra:</strong> R$ {item.bid} |
                 <strong> Venda:</strong> R$ {item.ask}
               </li>

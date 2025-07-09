@@ -11,15 +11,22 @@ export default function Cotacao() {
   const buscarCotacoes = async () => {
     setLoading(true);
 
-    const start = startDate.replace(/-/g, '');
-    const end = endDate.replace(/-/g, '');
-
-    const url = `https://economia.awesomeapi.com.br/json/daily/USD-BRL/365?start_date=${start}&end_date=${end}`;
-
     try {
-      const response = await fetch(url);
+      const response = await fetch('https://economia.awesomeapi.com.br/json/daily/USD-BRL/365');
       const data = await response.json();
-      setCotacoes(data);
+
+      const startTimestamp = new Date(startDate).getTime();
+      const endTimestamp = new Date(endDate).getTime();
+
+      const filtrados = data.filter(item => {
+        const dataItem = item.timestamp * 1000;
+        return dataItem >= startTimestamp && dataItem <= endTimestamp;
+      });
+
+      // Ordena por data (mais antiga primeiro)
+      filtrados.sort((a, b) => a.timestamp - b.timestamp);
+
+      setCotacoes(filtrados);
     } catch (error) {
       console.error('Erro ao buscar cotações:', error);
     } finally {
@@ -33,15 +40,25 @@ export default function Cotacao() {
 
       <div className={styles.inputGroup}>
         <label>Data Início:</label>
-        <input type="date" value={startDate} onChange={e => setStartDate(e.target.value)} />
+        <input
+          type="date"
+          value={startDate}
+          onChange={e => setStartDate(e.target.value)}
+        />
       </div>
 
       <div className={styles.inputGroup}>
         <label>Data Fim:</label>
-        <input type="date" value={endDate} onChange={e => setEndDate(e.target.value)} />
+        <input
+          type="date"
+          value={endDate}
+          onChange={e => setEndDate(e.target.value)}
+        />
       </div>
 
-      <button className={styles.button} onClick={buscarCotacoes}>Buscar</button>
+      <button className={styles.button} onClick={buscarCotacoes}>
+        Buscar
+      </button>
 
       <Link href="/">
         <button className={styles.button}>Voltar para Home</button>
@@ -55,7 +72,7 @@ export default function Cotacao() {
           <ul className={styles.resultList}>
             {cotacoes.map((item, index) => (
               <li key={index}>
-                <strong>Data:</strong> {new Date(item.timestamp * 1000).toLocaleDateString()} |
+                <strong>Data:</strong> {new Date(item.timestamp * 1000).toLocaleDateString('pt-BR')} |
                 <strong> Compra:</strong> R$ {item.bid} |
                 <strong> Venda:</strong> R$ {item.ask}
               </li>

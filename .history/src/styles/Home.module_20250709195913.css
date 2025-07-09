@@ -1,3 +1,5 @@
+/* styles/Home.module.css */
+
 .container {
   max-width: 800px;
   margin: 40px auto;
@@ -84,53 +86,4 @@
     width: 100%;
     margin: 0.5rem 0;
   }
-}
-
-.container {
-  min-height: 100vh;
-  padding: 2rem;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  background: linear-gradient(135deg, #e9f0ff, #fefefe);
-  font-family: 'Segoe UI', sans-serif;
-}
-
-.title {
-  font-size: 2.5rem;
-  color: #1c3d6e;
-  text-align: center;
-  margin-bottom: 1rem;
-}
-
-.description {
-  text-align: center;
-  font-size: 1.2rem;
-  color: #444;
-  margin-bottom: 2rem;
-}
-
-.button {
-  background-color: #1c3d6e;
-  color: white;
-  padding: 0.75rem 1.5rem;
-  font-size: 1rem;
-  border: none;
-  border-radius: 12px;
-  cursor: pointer;
-  display: block;
-  margin: 0 auto;
-  transition: background-color 0.3s ease;
-}
-
-.button:hover {
-  background-color: #102847;
-}
-
-.footer {
-  text-align: center;
-  padding: 1rem 0;
-  color: #777;
-  font-size: 0.9rem;
-  border-top: 1px solid #ccc;
 }

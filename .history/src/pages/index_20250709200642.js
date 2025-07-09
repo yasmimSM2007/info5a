@@ -6,24 +6,24 @@ export default function Home() {
   return (
     <div className={styles.container}>
       <Head>
-        <title>Painel de Consulta Financeira</title>
-        <meta name="description" content="Projeto em Next.js para acompanhar o dólar" />
+        <title>Minha Página com Next.js</title>
+        <meta name="description" content="Exemplo em JavaScript puro com Next.js" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
       <main>
-        <h1 className={styles.title}>Bem-vindo(a) ao Painel Financeiro</h1>
+        <h1 className={styles.title}>Hello Divos e Divas</h1>
         <p className={styles.description}>
-          Sistema simples feito em Next.js para consultar a cotação do dólar.
+          Esta é uma aplicação Next.js usando JavaScript.
         </p>
 
         <Link href="/cotacao">
-          <button className={styles.button}>Ver Cotação USD/BRL</button>
+          <button className={styles.button}>Acessar Cotação USD/BRL</button>
         </Link>
       </main>
 
       <footer className={styles.footer}>
-        <p>Desenvolvido com Next.js — Projeto Escolar</p>
+        <p>Feito em Next.js</p>
       </footer>
     </div>
   )
